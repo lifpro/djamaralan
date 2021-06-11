@@ -1,0 +1,11 @@
+var coursDuSoir = true;
+var age = 16;
+var nom = "Fatim";
+var phrase1 = "Je suis mlle " + nom + " et j'ai " + age + " ans";
+var phrase2 = "Je suis mlle " + nom + " et j'ai " + age + " ans";
+var planet = ["Mars", "Mercure", "Venus", "Juputer", "Terre", "Saturne", "Uranus", "Pluton", "Neptune"];
+var quelconque;
+quelconque = 5;
+quelconque = true;
+quelconque = "Salut";
+console.log("quelconque=" + quelconque);

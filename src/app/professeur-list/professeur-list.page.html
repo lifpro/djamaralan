@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>15 professeurs trouvés</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let p of professeurs">
+      <ion-icon [name]="p.photo" slot="start"></ion-icon>
+      <div>{{p.id}} - {{p.prenom}} {{p.nom}}</div>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

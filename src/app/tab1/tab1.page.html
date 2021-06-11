@@ -1,17 +1,78 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 1
+      Rechercher un étudiant
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Cycle</ion-label>
+      <ion-select value="Master" interface="action-sheet">
+        <ion-select-option value="Master">Master</ion-select-option>
+        <ion-select-option value="Licence">Licence</ion-select-option>
+        <ion-select-option value="Dut">Dut</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Niveau</ion-label>
+      <ion-select value="" interface="action-sheet">
+        <ion-select-option value="">Tout les niveaux</ion-select-option>
+        <ion-select-option value="1">Première année</ion-select-option>
+        <ion-select-option value="2">Deuxième année</ion-select-option>
+        <ion-select-option value="3">Troisième année</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Formation</ion-label>
+      <ion-select value="" interface="action-sheet">
+        <ion-select-option value="">Toute les formations</ion-select-option>
+        <ion-select-option value="Télécom">Télécom</ion-select-option>
+        <ion-select-option value="Informtique - Sécurité - Réseaux">Informtique - Sécurité - Réseaux</ion-select-option>
+        <ion-select-option value="Marketing">Marketing</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Centre</ion-label>
+      <ion-select value="" interface="action-sheet">
+        <ion-select-option value="">Tout les centres</ion-select-option>
+        <ion-select-option value="Bamako - Direction">Bamako - Direction</ion-select-option>
+        <ion-select-option value="Bamako - Sabalibougou">Bamako - Sabalibougou</ion-select-option>
+        <ion-select-option value="Bamoko - Hypodrome">Bamako - Hypodrome</ion-select-option>
+        <ion-select-option value="Bamako - Adeken">Bamako - Adeken</ion-select-option>
+        <ion-select-option value="Segou">Segou</ion-select-option>
+        <ion-select-option value="Sikasso">Sikasso</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Année académique</ion-label>
+      <ion-select value="" interface="action-sheet">
+        <ion-select-option value="">Toute les années</ion-select-option>
+        <ion-select-option value="2020-2021">2020-2021</ion-select-option>
+        <ion-select-option value="2019-2020">2019-2020</ion-select-option>
+        <ion-select-option value="2018-2019">2018-2019</ion-select-option>
+        <ion-select-option value="2017-2018">2017-2021</ion-select-option>
+        <ion-select-option value="2016-2017">2016-2017</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cours du jour ?</ion-label>
+      <ion-toggle></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nom ou prénom</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+  </ion-list>
+  <ion-button shape="round" expand="block" routerLink="/etudiant-list">
+    <ion-icon name="search" slot="start"></ion-icon>Rechercher
+  </ion-button>
+
 </ion-content>
+<ion-footer>
+  <app-signature></app-signature>
+</ion-footer>

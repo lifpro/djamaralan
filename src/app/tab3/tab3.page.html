@@ -1,17 +1,27 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 3
+      Mon profil
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img src="assets/img/pingouin.png" />
+      </ion-col>
+      <ion-col>
+        <p>Nom: <strong>SISSOKO</strong></p>
+        <p>Prénom: <strong>Moussa</strong></p>
+        <p>Sexe: <strong>Masculin</strong></p>
+        <p>Le né <strong>27/12/2000</strong></p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>4ieme année téleécom Technolab-ISTA</ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
 </ion-content>

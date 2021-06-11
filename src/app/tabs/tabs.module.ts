@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
+import { SignatureComponent } from '../signature/signature.component';
 
 @NgModule({
   imports: [
@@ -15,5 +16,6 @@ import { TabsPage } from './tabs.page';
     TabsPageRoutingModule
   ],
   declarations: [TabsPage]
+
 })
-export class TabsPageModule {}
+export class TabsPageModule { }
