@@ -9,8 +9,17 @@
 <!--Affichage du formulaire d'inscription-->
 <ion-content *ngIf="etat===0">
   <form [formGroup]="form">
-    <div class="img">
-      <ion-icon name="camera"></ion-icon>
+    <div class="header">
+      <div class="photo-box" (click)="addPhoto()">
+        <div class="img-box">
+          <img [src]="image">
+        </div>
+        <div class="buttons_box">
+          <div class="icon_box">
+            <ion-icon name="camera"></ion-icon>
+          </div>
+        </div>
+      </div>
     </div>
     <ion-list>
       <ion-item>

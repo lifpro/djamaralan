@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Etudiant } from '../models/etudiant';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ToastController } from '@ionic/angular';
+import { ActionSheetController, ToastController } from '@ionic/angular';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { ToastController } from '@ionic/angular';
 export class Tab3Page {
   etat: number = 0;// 0:Sans compte,1:Inscrit,2:Connecté
   imgUrl = "../assets/img/logo.png";
+  image = '../assets/img/user.png';
   item: Etudiant;
   form: FormGroup;
   collection: AngularFirestoreCollection;
@@ -22,6 +24,8 @@ export class Tab3Page {
   constructor(protected fb: FormBuilder,
     public databaseService: AngularFirestore,
     public authService: AngularFireAuth,
+    public actionSheetController: ActionSheetController,
+    private camera: Camera,
     public toast: ToastController) {
     this.collection = databaseService.collection('etudiants');
     this.item = new Etudiant();
@@ -125,5 +129,58 @@ export class Tab3Page {
   deleteDocument() {
     this.collection.doc(this.item.id).delete();
   }
+  async addPhoto() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Choisir',
+      cssClass: 'my-custom-class',
+      buttons: [
+        {
+          text: 'Camera',
+          icon: 'camera',
+          handler: () => {
+            console.log('camera');
+            this.recupererViaCamera();
+          }
+        }, {
+          text: 'Gallerie',
+          icon: 'image',
+          handler: () => {
+            console.log('galerie');
+            this.recupererViaGallerie();
+          }
+        }, {
+          text: 'Fermer',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }]
+    });
+    await actionSheet.present();
+    const { role } = await actionSheet.onDidDismiss();
 
+  }
+  async recupererViaCamera() {
+    const base64 = await this.captureImage(this.camera.PictureSourceType.CAMERA);
+    this.image = 'data:image/jpg;base64,' + base64;
+  }
+  async recupererViaGallerie() {
+    const base64 = await this.captureImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+    this.image = 'data:image/jpg;base64,' + base64;
+  }
+
+  async captureImage(source) {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 1000,
+      targetHeight: 1000,
+      correctOrientation: true,
+      sourceType: source
+    };
+    return await this.camera.getPicture(options);
+  }
 }
