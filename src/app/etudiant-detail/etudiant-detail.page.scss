@@ -1,0 +1,14 @@
+ion-content {
+    ion-button {
+        --background: var(--ion-color-secondary)
+    }
+
+    ion-icon {
+        height: 256px;
+        width: 256px;
+    }
+
+    .img {
+        text-align: center;
+    }
+}

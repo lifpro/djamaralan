@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Etudiant } from '../models/etudiant';
 
 @Component({
   selector: 'app-etudiant-detail',
@@ -6,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./etudiant-detail.page.scss'],
 })
 export class EtudiantDetailPage implements OnInit {
-
-
-
-  constructor() { }
+  item: Etudiant = new Etudiant();
+  constructor(private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    let maVariable = "Hello mmi";
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.item = this.router.getCurrentNavigation().extras.state.etud;
+      }
+    });
 
   }
+  appeler() {
 
+  }
 }

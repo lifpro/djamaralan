@@ -6,22 +6,119 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <img src="assets/img/pingouin.png" />
-      </ion-col>
-      <ion-col>
-        <p>Nom: <strong>SISSOKO</strong></p>
-        <p>Prénom: <strong>Moussa</strong></p>
-        <p>Sexe: <strong>Masculin</strong></p>
-        <p>Le né <strong>27/12/2000</strong></p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>4ieme année téleécom Technolab-ISTA</ion-col>
-    </ion-row>
-  </ion-grid>
+<!--Affichage du formulaire d'inscription-->
+<ion-content *ngIf="etat===0">
+  <form [formGroup]="form">
+    <div class="img">
+      <ion-icon name="camera"></ion-icon>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Prénom</ion-label>
+        <ion-input formControlName="prenom"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input formControlName="nom"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Sexe</ion-label>
+        <ion-select formControlName="sexe" interface="action-sheet">
+          <ion-select-option value="H">Homme</ion-select-option>
+          <ion-select-option value="F">Femme</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Télephone</ion-label>
+        <ion-input formControlName="telephone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input type="password" formControlName="pwd"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cycle</ion-label>
+        <ion-select formControlName="cycle" interface="action-sheet">
+          <ion-select-option value="M">Master</ion-select-option>
+          <ion-select-option value="L">Licence</ion-select-option>
+          <ion-select-option value="D">Dut</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Niveau</ion-label>
+        <ion-select formControlName="niveau" interface="action-sheet">
+          <ion-select-option value="">Tout les niveaux</ion-select-option>
+          <ion-select-option value="1">Première année</ion-select-option>
+          <ion-select-option value="2">Deuxième année</ion-select-option>
+          <ion-select-option value="3">Troisième année</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Formation</ion-label>
+        <ion-select formControlName="formation" interface="action-sheet">
+          <ion-select-option value="">Toute les formations</ion-select-option>
+          <ion-select-option value="Télécom">Télécom</ion-select-option>
+          <ion-select-option value="Informtique - Sécurité - Réseaux">Informtique - Sécurité - Réseaux
+          </ion-select-option>
+          <ion-select-option value="Marketing">Marketing</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Centre</ion-label>
+        <ion-select formControlName="centre" interface="action-sheet">
+          <ion-select-option value="">Tout les centres</ion-select-option>
+          <ion-select-option value="Bamako - Direction">Bamako - Direction</ion-select-option>
+          <ion-select-option value="Bamako - Sabalibougou">Bamako - Sabalibougou</ion-select-option>
+          <ion-select-option value="Bamoko - Hypodrome">Bamako - Hypodrome</ion-select-option>
+          <ion-select-option value="Bamako - Adeken">Bamako - Adeken</ion-select-option>
+          <ion-select-option value="Segou">Segou</ion-select-option>
+          <ion-select-option value="Sikasso">Sikasso</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Année académique</ion-label>
+        <ion-select formControlName="annee" interface="action-sheet">
+          <ion-select-option value="">Toute les années</ion-select-option>
+          <ion-select-option value="2020-2021">2020-2021</ion-select-option>
+          <ion-select-option value="2019-2020">2019-2020</ion-select-option>
+          <ion-select-option value="2018-2019">2018-2019</ion-select-option>
+          <ion-select-option value="2017-2018">2017-2021</ion-select-option>
+          <ion-select-option value="2016-2017">2016-2017</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cours du jour ?</ion-label>
+        <ion-toggle formControlName="cours"></ion-toggle>
+      </ion-item>
 
+
+    </ion-list>
+    <ion-button [disabled]="!form.valid" (click)="inscription()" shape="round" expand="block">
+      Inscription
+    </ion-button>
+  </form>
+</ion-content>
+<!--Affichage du formulaire de connexion-->
+<ion-content *ngIf="etat===1">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="item.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Mot de passe</ion-label>
+      <ion-input type="password" [(ngModel)]="item.pwd"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button shape="round" expand="block">
+    Connexion
+  </ion-button>
+</ion-content>
+<!--Affichage de la page du profil en mode consultation-->
+<ion-content *ngIf="etat===2">
+  Connecté
 </ion-content>

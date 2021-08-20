@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Search } from '../models/search';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  imgUrl = "../assets/img/logo.png";
+  item: Search;
+  constructor() {
+    this.item = new Search();
+    this.item.cycle = "M";
+  }
 
-  constructor() {}
+  search() {
+    alert(JSON.stringify(this.item))
+  }
+
 
 }

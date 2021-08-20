@@ -1,14 +1,44 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>
-      Professeurs
+      Rechercher professeur
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h2 class="ion-text-center">Rechercher un professeur</h2>
-  <ion-button shape="round" expand="block" routerLink="/professeur-list">
+  <div class="img">
+    <img [src]="imgUrl" width="64" height="64" />
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Cycle</ion-label>
+      <ion-select [(ngModel)]="item.cycle" interface="action-sheet">
+        <ion-select-option value="M">Master</ion-select-option>
+        <ion-select-option value="L">Licence</ion-select-option>
+        <ion-select-option value="D">Dut</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Formation</ion-label>
+      <ion-select [(ngModel)]="item.formation" interface="action-sheet">
+        <ion-select-option value="">Toute les formations</ion-select-option>
+        <ion-select-option value="Télécom">Télécom</ion-select-option>
+        <ion-select-option value="Informtique - Sécurité - Réseaux">Informtique - Sécurité - Réseaux</ion-select-option>
+        <ion-select-option value="Marketing">Marketing</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Nom ou prénom</ion-label>
+      <ion-input [(ngModel)]="item.nom"></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+  <ion-button shape="round" expand="block" (click)="search()">
     <ion-icon name="search" slot="start"></ion-icon>Rechercher
   </ion-button>
 </ion-content>

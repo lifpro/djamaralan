@@ -1,0 +1,72 @@
+#Lancer l'application dans le navigateur
+ionic serve
+
+#Lancer l'application dans le navigateur en mode lab
+ionic serve --lab
+
+#Lancer l'application dans le navigateur avec prise en charge de cordova
+ionic cordova run browser
+
+#regenerer les icons de l'application
+ionic cordova resources
+
+#Ajouter la version android
+ionic cordova platform add android
+
+#Ajouter la version ios
+ionic cordova platform add ios
+
+#Lancer l'application dans un emulateur ou un telephone branché
+ionic cordova run android
+
+#Compiler la version android
+ionic cordova build android
+
+#Exporter le apk la version android
+native-run android --app c:/apk/app-debug.apk
+
+#INSTALLATION DES MODULES
+
+#Installer le plugin angulaireFire
+npm install firebase @angular/fire
+
+#camera
+ionic cordova plugin add cordova-plugin-camera
+npm install @ionic-native/camera
+
+#media
+ionic cordova plugin add cordova-plugin-media
+npm install @ionic-native/media
+
+ionic cordova plugin add cordova-plugin-media-capture
+npm install @ionic-native/media-capture
+
+#Base64
+ionic cordova plugin add com-badrit-base64
+npm install @ionic-native/base64
+
+#Internet
+ionic cordova plugin add cordova-plugin-network-information
+npm install --save @ionic-native/network
+
+#SqLite
+npm install @ionic-native/sqlite @ionic-native/sqlite-porter
+ionic cordova plugin add cordova-sqlite-storage
+ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
+
+#Call number
+ionic cordova plugin add call-number
+npm install @ionic-native/call-number
+
+
+#Google Maps
+ionic cordova plugin add cordova-plugin-googlemaps
+npm install --save @ionic-native/core@latest @ionic-native/google-maps@latest
+
+
+
+
+
+
+
+

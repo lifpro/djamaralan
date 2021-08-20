@@ -3,17 +3,18 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>15 étudiants trouvés</ion-title>
+    <ion-title>{{nbe}} étudiants trouvés</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let e of etudiants" [routerLink]="'/etudiant-detail/' + e.id" routerDirection="forward">
+  <ion-card *ngFor="let e of etudiants" (click)="openDetail(e)">
     <ion-card-header>
-      <ion-card-subtitle>Matricule : {{e.id}} </ion-card-subtitle>
+      <!-- <ion-card-subtitle>Matricule : {{e.id}} </ion-card-subtitle> -->
       <ion-card-title>
-        <span *ngIf="e.sexe==='M'" style="color: cornflowerblue;">{{e.prenom}} {{e.nom | uppercase}}</span>
-        <span *ngIf="e.sexe!=='M'" style="color: deeppink">{{e.prenom}} {{e.nom | uppercase}}</span>
+        <span [style.color]="e.sexe==='M' ? 'cornflowerblue' : 'deeppink'">{{e.prenom}} {{e.nom |
+          uppercase}}</span>
+        <!-- <span *ngIf="e.sexe!=='M'" style="color: deeppink">{{e.prenom}} {{e.nom | uppercase}}</span> -->
       </ion-card-title>
     </ion-card-header>
 

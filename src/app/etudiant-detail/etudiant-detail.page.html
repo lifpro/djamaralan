@@ -3,14 +3,95 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Etudiant N°: </ion-title>
+    <ion-title>Détail étudiant</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p appTrombiborder>Nom : Moussa</p>
+  <div class="img">
+    <ion-icon name="camera"></ion-icon>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Prénom</ion-label>
+      <ion-input [value]="item.prenom" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input [value]="item.nom" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Sexe</ion-label>
+      <ion-input value="Homme" *ngIf="item.sexe==='H'" readonly></ion-input>
+      <ion-input value="Femme" *ngIf="item.sexe==='F'" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Télephone</ion-label>
+      <ion-input [value]="item.telephone" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [value]="item.email" readonly></ion-input>
+    </ion-item>
 
-  <span>{{maVariable | monPipe}}</span>
+    <ion-item>
+      <ion-label position="floating">Cycle</ion-label>
+      <ion-select [value]="item.cycle" interface="action-sheet">
+        <ion-select-option value="M">Master</ion-select-option>
+        <ion-select-option value="L">Licence</ion-select-option>
+        <ion-select-option value="D">Dut</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Niveau</ion-label>
+      <ion-select [value]="item.niveau" interface="action-sheet">
+        <ion-select-option value="">Tout les niveaux</ion-select-option>
+        <ion-select-option value="1">Première année</ion-select-option>
+        <ion-select-option value="2">Deuxième année</ion-select-option>
+        <ion-select-option value="3">Troisième année</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Formation</ion-label>
+      <ion-select [value]="item.formation" interface="action-sheet">
+        <ion-select-option value="">Toute les formations</ion-select-option>
+        <ion-select-option value="Télécom">Télécom</ion-select-option>
+        <ion-select-option value="Informtique - Sécurité - Réseaux">Informtique - Sécurité - Réseaux
+        </ion-select-option>
+        <ion-select-option value="Marketing">Marketing</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Centre</ion-label>
+      <ion-select [value]="item.centre" interface="action-sheet">
+        <ion-select-option value="">Tout les centres</ion-select-option>
+        <ion-select-option value="Bamako - Direction">Bamako - Direction</ion-select-option>
+        <ion-select-option value="Bamako - Sabalibougou">Bamako - Sabalibougou</ion-select-option>
+        <ion-select-option value="Bamoko - Hypodrome">Bamako - Hypodrome</ion-select-option>
+        <ion-select-option value="Bamako - Adeken">Bamako - Adeken</ion-select-option>
+        <ion-select-option value="Segou">Segou</ion-select-option>
+        <ion-select-option value="Sikasso">Sikasso</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Année académique</ion-label>
+      <ion-select [value]="item.annee" interface="action-sheet">
+        <ion-select-option value="">Toute les années</ion-select-option>
+        <ion-select-option value="2020-2021">2020-2021</ion-select-option>
+        <ion-select-option value="2019-2020">2019-2020</ion-select-option>
+        <ion-select-option value="2018-2019">2018-2019</ion-select-option>
+        <ion-select-option value="2017-2018">2017-2021</ion-select-option>
+        <ion-select-option value="2016-2017">2016-2017</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cours du jour ?</ion-label>
+      <ion-toggle [value]="item.cours"></ion-toggle>
+    </ion-item>
 
 
+  </ion-list>
+  <ion-button (click)="appeler()" shape="round" expand="block">
+    Appeler
+  </ion-button>
 </ion-content>
