@@ -20,6 +20,7 @@ export class EtudiantListPage implements OnInit {
   etudiants: [] = [];
   item: Search;
   collection: AngularFirestoreCollection;
+  loaded
   constructor(private router: Router,
     private route: ActivatedRoute,
     public databaseService: AngularFirestore) {

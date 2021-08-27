@@ -24,6 +24,7 @@ export class Tab3Page {
   constructor(protected fb: FormBuilder,
     public databaseService: AngularFirestore,
     public authService: AngularFireAuth,
+    public stockageService: AngularFireStorage,
     public actionSheetController: ActionSheetController,
     private camera: Camera,
     public toast: ToastController) {
@@ -99,16 +100,25 @@ export class Tab3Page {
       this.item.telephone = this.item.telephone.replace('+', '');
     }
 
+    //création de l'utilisateur avec son email et mot de passe
     this.authService.createUserWithEmailAndPassword(this.item.email, this.item.pwd).then(async auth => {
+      //recuperation de l'ID de l'utilisateur
       this.item.id = auth.user.uid;
-      this.collection.doc(this.item.id).set(Object.assign({}, this.item));
-      const mymessage = await this.toast.create({
-        message: 'Compte créé avec succès',
-        duration: 2000,
-        position: 'bottom',
-        color: 'success',
+      //envoi du fichier image/text dans un dossier photo de storage avec le nom commme ID de l'utilisateur
+      let task = this.stockageService.ref('photo').child(this.item.id).putString(this.image, 'data_url');
+      task.then(async res => {
+        //recuperation de l'url de telechargement de la photo
+        this.item.photo = await this.stockageService.ref(`photo/${this.item.id}`).getDownloadURL().toPromise();
+        this.collection.doc(this.item.id).set(Object.assign({}, this.item));
+        const mymessage = await this.toast.create({
+          message: 'Compte créé avec succès',
+          duration: 2000,
+          position: 'bottom',
+          color: 'success',
+        });
+        mymessage.present();
       });
-      mymessage.present();
+
     }).catch(async error => {
       console.log(error)
       const mymessage = await this.toast.create({
@@ -168,6 +178,7 @@ export class Tab3Page {
   async recupererViaGallerie() {
     const base64 = await this.captureImage(this.camera.PictureSourceType.PHOTOLIBRARY);
     this.image = 'data:image/jpg;base64,' + base64;
+    console.log(this.image)
   }
 
   async captureImage(source) {

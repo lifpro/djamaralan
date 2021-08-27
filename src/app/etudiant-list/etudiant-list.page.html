@@ -12,8 +12,16 @@
     <ion-card-header>
       <!-- <ion-card-subtitle>Matricule : {{e.id}} </ion-card-subtitle> -->
       <ion-card-title>
-        <span [style.color]="e.sexe==='M' ? 'cornflowerblue' : 'deeppink'">{{e.prenom}} {{e.nom |
-          uppercase}}</span>
+        <ion-item lines="none" no-padding>
+          <div class="photo">
+            <img src="assets/img/user.png" (load)="loaded = false" [hidden]="loaded">
+            <img *ngIf="e.photo" [src]="e.photo" (load)="loaded = true" alt="">
+            <img *ngIf="!e.photo" src="assets/img/user.png">
+          </div>
+          <div class="name"><span [style.color]="e.sexe==='M' ? 'cornflowerblue' : 'deeppink'">{{e.prenom}}
+              {{e.nom |
+              uppercase}}</span></div>
+        </ion-item>
         <!-- <span *ngIf="e.sexe!=='M'" style="color: deeppink">{{e.prenom}} {{e.nom | uppercase}}</span> -->
       </ion-card-title>
     </ion-card-header>

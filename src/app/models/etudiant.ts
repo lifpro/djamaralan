@@ -12,5 +12,6 @@ export class Etudiant {
     annee: string;
     cours: string;
     pwd: string;
+    photo: string;
 
 }
